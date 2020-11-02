@@ -20,10 +20,10 @@ call:
 	curl localhost:3000
 
 deploy:
-	kubectl apply -f ./deployment.yml
+	kubectl apply -f k8s/deployment.yml
 
 deploy-pull-secret:
-	kubectl apply -f ./deployment-pull-secret.yml
+	kubectl apply -f k8s/deployment-pull-secret.yml
 
 scale-zero:
 	kubectl scale deployment $(app) --replicas=0
@@ -52,16 +52,15 @@ secret-docker-login:
 	 --docker-email=igorferreirabr@gmail.com
 
 service-deploy:
-	kubectl apply -f service.yml
+	kubectl apply -f k8s/service.yml
 
 # https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/#forward-a-local-port-to-a-port-on-the-pod
 port-forward:
-	kubectl port-forward service/fullcycle-service 3000:3000 & \
-	jobs -p > .port-forward.pid
+	kubectl port-forward service/fullcycle-service 3000:3000 & jobs -p > k8s/.port-forward.pid
 
 delete-port-forward:
-	echo "kill `cat ./.port-forward.pid`" && kill -9 `cat ./.port-forward.pid`
+	echo "kill `cat k8s/.port-forward.pid`" && kill -9 `cat k8s/.port-forward.pid`
 
 get-pid-port-forward:
-	cat ./.port-forward.pid && \
-	ps -edf | grep `cat ./.port-forward.pid`
+	cat k8s/.port-forward.pid && \
+	ps -edf | grep `cat k8s/.port-forward.pid`
