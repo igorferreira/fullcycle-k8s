@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fullcycle
+  namespace: default
+  labels:
+    app:  fullcycle  
+spec:
+  selector:
+    matchLabels:
+      app: fullcycle
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: fullcycle
+    spec:
+      containers:
+      - name: fullcycle
+        image: igorferreira/fullcycle:latest
+        ports:
+          - containerPort: 3000
+      restartPolicy: Always
