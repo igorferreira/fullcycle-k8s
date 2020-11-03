@@ -8,4 +8,9 @@ Esse codigo foi gerado assistindo a aula de kubernets do canal DevFullCycle
 
 ## Links
 
-- Intensivo Kubernetes: O mínimo que um dev precisa saber: https://www.youtube.com/watch?v=5unI7VPnASM&t=5864s
+- Intensivo Kubernetes: O mínimo que um dev precisa saber: 
+    - https://www.youtube.com/watch?v=5unI7VPnASM&t=5864s
+
+- Usei o KinD para subir um cluster kubernetes.
+    - https://kind.sigs.k8s.io/docs/user/quick-start
+
